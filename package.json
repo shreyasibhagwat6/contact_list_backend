@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/shreyasibhagwat6/contact_list_backend#readme",
   "dependencies": {
+    "@prisma/client": "^5.13.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "prisma": "^5.13.0"
   }
 }
