@@ -14,7 +14,15 @@ app.get('/', async (req, res) => {
 })
 
 app.post('/', async (req, res) => {
-    const newContact = await prisma.contact.create({ data: req.body });
+    const { firstName, lastName, phoneNumber } = req.body
+    const newContact = await prisma.contact.create({ 
+        data: {
+        firstName,
+        lastName,
+        phoneNumber
+        },
+    });
+    console.log(newContact)
     res.json(newContact);
 })
 
