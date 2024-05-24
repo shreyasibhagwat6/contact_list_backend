@@ -22,14 +22,21 @@ app.post('/', async (req, res) => {
         phoneNumber
         },
     });
-    console.log(newContact)
     res.json(newContact);
 })
 
 app.put('/:id', async (req, res) => {
-    const id = req.params.id;
+    const { id } = req.params;
     const newFirstName = req.body.firstName;
-    const updatedContact = await prisma.contact.update({ where: {id: parseInt(id)}, data: {firstName: newFirstName} });
+    const newLastName = req.body.lastName;
+    const newPhoneNumber = req.body.phoneNumber;
+    const updatedContact = await prisma.contact.update({ 
+        where: { id: parseInt(id) }, 
+        data: {
+        firstName: newFirstName,
+        lastName: newLastName,
+        phoneNumber: newPhoneNumber
+    } });
     res.json(updatedContact);
 })
 
