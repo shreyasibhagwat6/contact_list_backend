@@ -14,12 +14,13 @@ app.get('/', async (req, res) => {
 })
 
 app.post('/', async (req, res) => {
-    const { firstName, lastName, phoneNumber } = req.body
+    const { firstName, lastName, phoneNumber, address } = req.body
     const newContact = await prisma.contact.create({ 
         data: {
         firstName,
         lastName,
-        phoneNumber
+        phoneNumber,
+        address
         },
     });
     res.json(newContact);
@@ -30,12 +31,14 @@ app.put('/:id', async (req, res) => {
     const newFirstName = req.body.firstName;
     const newLastName = req.body.lastName;
     const newPhoneNumber = req.body.phoneNumber;
+    const newAddress = req.body.address;
     const updatedContact = await prisma.contact.update({ 
         where: { id: parseInt(id) }, 
         data: {
         firstName: newFirstName,
         lastName: newLastName,
-        phoneNumber: newPhoneNumber
+        phoneNumber: newPhoneNumber,
+        address: newAddress
     } });
     res.json(updatedContact);
 })
